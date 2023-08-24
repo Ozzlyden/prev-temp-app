@@ -1,10 +1,15 @@
 import './App.css'
+import {useState} from 'react';
+
 
 function Search(props){
+
+    const [cidade,setCidade] = useState("");
 
     function searchInput(e){
 
         e.preventDefault();
+        //setCidade("");
         let currentValue = document.querySelector('input[name=searchInput]')
         .value;
 
@@ -19,21 +24,41 @@ function Search(props){
         .then(data=>{
             const {main, name, sys, weather} = data;
             if(sys != undefined)
-                console.log(sys);   
-            if(weather != undefined)
-                console.log(weather[0]['description']); 
+                //console.log(sys);   
+            if(weather != undefined){
+                const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0]["icon"]}.svg`;
+                
+                // Info da cidade
+                setCidade(`
+                <div>
+                    <p>Temperatura: ${main.temp}°F</p>
+                    <p>País: ${sys.country}</p>
+                    <p>Nome cidade: ${name}</p>
+                    <p>Clima: ${weather[0]['description']}</p>
+                    <img src="${icon}" />
+                </div>
+                `);
+            }else{
+                    setCidade("");
+                }
         })
     }
 
-
-
     return(
-        <div className="search">
-            <h2>Digite a cidade que você quer saber a previsão... ?🤔</h2>
-            <form onSubmit={(e)=>searchInput(e)}>
-                <input placeholder="Cidade..."  type="text" name="searchInput" />
-                <input type="submit" value="Pesquisar"/>
-            </form>
+        <div className='searchWraper'>
+            <div className="search">
+                <h2>Qual a previsão de tempo da sua cidade... ?🤔</h2>
+                <form onSubmit={(e)=>searchInput(e)}>
+                    <input placeholder="Cidade..."  type="text" name="searchInput" />
+                    <input type="submit" value="Pesquisar"/>
+                </form>
+            </div>
+            {
+
+            (cidade!= "")?
+            <div dangerouslySetInnerHTML={{__html: cidade}} />:
+            <div>Pesquise por algo acima...</div>
+            }
         </div>
     )
 }
