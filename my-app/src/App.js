@@ -1,13 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import Search from './Search';
 
 export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-        <h2> Projeto Previsão tempo</h2>
-      </header>
+      <Search/>
     </div>
   );
 }
