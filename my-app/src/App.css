@@ -1,22 +1,53 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.search{
+.search {
   background-color: aqua;
   padding: 10px;
   text-align: center;
 }
 
-.search h2{
-  color: white;
+.search h2 {
+  color: black;
+  padding: 8px;
 }
 
-.search input[type=text]{
-  width: 10%;
-  height: 20px;
+.search input[type="text"] {
+  width: 60%;
+  height: 40px;
   padding-left: 10px;
+  border: 0;
+}
+
+.search input[type="submit"] {
+  width: 60%;
+  height: 40px;
+  cursor: pointer;
+  background-color: rgb(241, 253, 253);
+  border: 0;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.containerLoad {
+  padding: 8px;
+  text-align: center;
+}
+
+.containerCidade {
+  text-align: center;
+}
+
+.conteinerCidade p {
+  border-bottom: 1px dashed #ccc;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.containerCidade img {
+  width: 15%;
 }
